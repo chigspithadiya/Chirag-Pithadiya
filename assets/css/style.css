@@ -1355,13 +1355,19 @@ ul.timeline > li:before {
 }
 
 .mono .pill-button {
+  /* background-color: #2a2a2b;
+  border: 2px solid #2a2a2b; */
+
   background-color: #2a2a2b;
-  border: 2px solid #2a2a2b;
+    border: 2px solid #2a2a2b;
+    transition: background 0.3s ease-in-out;
 }
 
 .mono .pill-button:hover {
-  background-color: black;
-  border-color: black;
+  /* background-color: black;
+  border-color: black; */
+  background-color: #ff9500;
+    border-color: #ff9500;
 }
 
 .mono .loader {

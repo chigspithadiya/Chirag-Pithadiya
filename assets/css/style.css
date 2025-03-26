@@ -90,6 +90,7 @@ a:hover {
 
 a, button {
   outline: none !important;
+  text-decoration: none;
 }
 
 .max-width-365 {
@@ -387,7 +388,7 @@ header {
 }
 
 .hero .personal-item .personal-info p {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero .personal-item .personal-info span {
@@ -647,7 +648,7 @@ ul.timeline:before {
   background: #929292;
   display: inline-block;
   position: absolute;
-  left: 9px;
+  left: 1px;
   top: 30px;
   width: 2px;
   height: 100%;
@@ -721,10 +722,11 @@ ul.timeline > li:before {
          Services
 -------------------------*/
 .services .services-item {
-  background-color: rgba(200, 200, 200, 0.05);
-  border-radius: 4px;
-  padding: 25px 10px;
+  background-color: rgba(239, 239, 239, 1);
+  border-radius: 8px;
+  padding: 25px 16px;
   margin-bottom: 30px;
+  display: flex;
 }
 
 .services .services-item:hover .services-icon {
@@ -735,7 +737,7 @@ ul.timeline > li:before {
 }
 
 .services .services-content {
-  padding-left: 3rem;
+  padding-left: 1rem;
 }
 
 /*-------------------------
@@ -889,7 +891,7 @@ ul.timeline > li:before {
   max-width: 750px;
   margin: 0 auto;
   border-radius: 4px;
-  background-color: rgba(200, 200, 200, 0.05) !important;
+  background-color: rgba(239, 239, 239, 1) !important;
   padding: 30px;
   overflow: hidden;
 }
@@ -978,7 +980,7 @@ ul.timeline > li:before {
 }
 
 .blog .blog-content {
-  background-color: rgba(200, 200, 200, 0.05) !important;
+  background-color: rgba(239, 239, 239, 1) !important;
 }
 
 .blog .blog-link button {

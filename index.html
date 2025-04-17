@@ -1693,11 +1693,12 @@
                     class="lni-linkedin-original text-dark mr-2"></i></a>
               </li>
             </ul>
-            <p class="pl-3 text-dark">
-              Copyright © 2023. This site has been designed by
+            <!-- <p class="pl-3 text-dark">
+              Copyright © 2025. This site has been designed by
               <a class="base-color fw-bolder" href="https://www.linkedin.com/in/chiragpithadiya/" target="blank">Chirag
                 Pithadiya</a>
-            </p>
+            </p> -->
+            <p id="copyright"></p>
           </div>
         </div>
       </div>
@@ -1721,6 +1722,12 @@
   <script src="assets/js/nill.js"></script>
 
   <script>
+    // footer Copyright
+    const year = new Date().getFullYear();
+    document.getElementById("copyright").innerHTML = `&copy; ${year} This site has been designed by <a class="base-color fw-bolder" href="https://www.linkedin.com/in/chiragpithadiya/" target="blank">Chirag
+                Pithadiya</a>.`;
+
+    // birthdate Age calculater
     function calculateAge(birthYear) {
       const currentYear = new Date().getFullYear();
       return currentYear - birthYear;

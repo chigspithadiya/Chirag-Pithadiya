@@ -1763,9 +1763,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcmB207_E3E4SkA8jTA8FQjSWTop9YxZU"></script>
   <!--  Custom JS  -->
   <script src="assets/js/nill.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2TB8MMERV4"></script>
 
 
   <script>
+
+    // Google Analitics
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-2TB8MMERV4');
     //Skillbar animation
     window.addEventListener("DOMContentLoaded", () => {
       const skillbars = document.querySelectorAll('.skillbar');

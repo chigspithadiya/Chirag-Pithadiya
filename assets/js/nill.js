@@ -254,6 +254,7 @@ function portfolioPopup() {
             $(this).magnificPopup({
                 delegate: '.js-zoom-gallery',
                 type: 'image',
+                verticalFit: true,
                 gallery: {
                     enabled:true
                 },

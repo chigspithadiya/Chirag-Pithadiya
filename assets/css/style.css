@@ -365,7 +365,7 @@ header {
 
 .overlay-menu-toggler {
   position: absolute;
-  top: 5px;
+  top: auto;
   color: #222 !important;
   padding: 10px;
   right: 24px;

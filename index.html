@@ -1903,7 +1903,10 @@
         `&copy; ${year} This site has been designed by <a class="base-color fw-bolder" href="https://www.linkedin.com/in/chiragpithadiya/" target="_blank">Chirag Pithadiya</a>.`;
 
       // Age calculator
-      document.getElementById("age").textContent = new Date().getFullYear() - 1998;
+      const ageEl = document.getElementById("age");
+      if (ageEl) {
+        ageEl.textContent = new Date().getFullYear() - 1998;
+      }
 
       // Contact form submission
       window.sendEmail = function () {

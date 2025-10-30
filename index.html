@@ -1930,11 +1930,11 @@
       };
 
       // Register Service Worker
-      if ("serviceWorker" in navigator) {
+      if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register("/Chirag-Pithadiya/assets/js/service-worker.js")
-          .then(reg => console.log("✅ Service Worker Registered:", reg.scope))
-          .catch(err => console.error("❌ Service Worker failed:", err));
+          .register('/Chirag-Pithadiya/assets/js/service-worker.js')
+          .then(reg => console.log('✅ Service Worker Registered:', reg.scope))
+          .catch(err => console.error('❌ Service Worker registration failed:', err));
       }
     });
   </script>

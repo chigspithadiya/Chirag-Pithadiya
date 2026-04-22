@@ -554,7 +554,7 @@
                 </div> -->
                 <div class="row">
                   <div class="col-12">
-                    <a href="assets/doc/Chirag_Pithadiya_UIUX_Designer_CV_2025.pdf" target="blank"
+                    <a href="assets/doc/Chirag_Pithadiya_UIUX_Designer_CV_2026.pdf" target="blank"
                       class="pill-button mt-3 mb-lg-0 me-2" alt="Download Resume">🧠 Download Resume</a>
                     <a href="https://wa.me/+919924240975" target="blank" alt="Send Message"
                       class="pill-button mt-3 mb-lg-0">💬 Let’s Connect</a>
@@ -1776,13 +1776,11 @@
                       <button type="button" class="pill-button w-100" id="submit-btn" onclick="sendEmail()">
                         Send Message
                       </button>
-                      <div id="message" class="toast text-white shadow-none border-0" role="alert" aria-live="assertive"
-                        aria-atomic="true" data-delay="4000">
-                        <div class="toast-body d-inline-block"></div>
-                        <button type="button" class="btn-close ms-auto" data-dismiss="toast"
-                          aria-label="Close"></button>
-                        <div id="message" class="message" style="display: none;"></div>
-
+                      <div id="message" class="toast text-white shadow-none border-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="4000">
+                        <div class="d-flex align-items-center">
+                          <div class="toast-body d-inline-block p-0"></div>
+                          <button type="button" class="btn-close ms-auto" aria-label="Close"></button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1908,26 +1906,80 @@
         ageEl.textContent = new Date().getFullYear() - 1998;
       }
 
-      // Contact form submission
-      window.sendEmail = function () {
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const comments = document.getElementById("comments").value.trim();
+      // ✅ Final Contact Form Submission (Google Apps Script Integrated)
+      window.sendEmail = async function () {
+        const nameEl = document.getElementById("name");
+        const emailEl = document.getElementById("email");
+        const commentsEl = document.getElementById("comments");
+        const toast = document.querySelector("#message .toast-body");
+        const toastContainer = document.getElementById("message");
 
-        if (!name || !email || !comments) return console.warn("Please fill all required fields.");
+        if (!nameEl || !emailEl || !commentsEl) {
+          console.error("❌ Form elements not found in DOM.");
+          return;
+        }
 
-        fetch("https://script.google.com/macros/s/AKfycby1ZXSD9bDEM-idOqoXAfMLbx353kHSaNJJXE-7_6HQGZgmdwfJKZUoXql52BiMTEhq/exec", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, comments })
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.status === "success") document.getElementById("contactForm").reset();
-            else console.error("Server error:", data.message);
-          })
-          .catch(err => console.error("Fetch error:", err));
+        const name = nameEl.value.trim();
+        const email = emailEl.value.trim();
+        const comments = commentsEl.value.trim();
+
+        if (!name || !email || !comments) {
+          showToast("⚠️ Please fill all required fields.", "orange");
+          return;
+        }
+
+        // Show loading state
+        showToast("⏳ Sending your message...", "#007bff");
+
+        try {
+          const response = await fetch(
+            "https://script.google.com/macros/s/AKfycby1ZXSD9bDEM-idOqoXAfMLbx353kHSaNJJXE-7_6HQGZgmdwfJKZUoXql52BiMTEhq/exec",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, comments }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.status === "success") {
+            document.getElementById("contactForm").reset();
+            showToast("✅ Message sent successfully!", "green");
+          } else {
+            showToast("❌ Something went wrong. Please try again.", "red");
+          }
+        } catch (error) {
+          console.error("❌ Fetch error:", error);
+          showToast("⚠️ Network error. Please try again later.", "red");
+        }
       };
+
+      // ✅ Reusable Toast Function
+      function showToast(message, bgColor = "gray") {
+        const toastContainer = document.getElementById("message");
+        const toastBody = document.querySelector("#message .toast-body");
+
+        if (!toastContainer || !toastBody) return;
+
+        toastBody.textContent = message;
+        toastContainer.style.display = "block";
+        toastContainer.style.backgroundColor = bgColor;
+        toastContainer.style.padding = "10px 16px";
+        toastContainer.style.borderRadius = "8px";
+        toastContainer.style.color = "#fff";
+        toastContainer.style.marginTop = "10px";
+        toastContainer.style.transition = "opacity 0.3s ease";
+        toastContainer.style.width = "100%";
+        toastContainer.style.left = "0";
+
+
+        // Auto hide after 4s
+        setTimeout(() => {
+          toastContainer.style.display = "none";
+        }, 4000);
+      }
+
 
       // Register Service Worker
       if ('serviceWorker' in navigator) {
